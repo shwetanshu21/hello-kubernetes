@@ -41,17 +41,17 @@ spec:
         image: paulbouwer/hello-kubernetes:1.7
         ports:
         - containerPort: 8080
-      strategy:
-        blueGreen: 
+  strategy:
+    blueGreen: 
           # activeService specifies the service to update with the new template hash at time of promotion.
           # This field is mandatory for the blueGreen update strategy.
-          activeService: hello-kubernetes-active
+      activeService: hello-kubernetes-active
           # previewService specifies the service to update with the new template hash before promotion.
           # This allows the preview stack to be reachable without serving production traffic.
           # This field is optional.
-          previewService: hello-kubernetes-preview
+      previewService: hello-kubernetes-preview
           # autoPromotionEnabled disables automated promotion of the new stack by pausing the rollout
           # immediately before the promotion. If omitted, the default behavior is to promote the new
           # stack as soon as the ReplicaSet are completely ready/available.
           # Rollouts can be resumed using: `kubectl argo rollouts resume ROLLOUT`
-          autoPromotionEnabled: false
+      autoPromotionEnabled: false
